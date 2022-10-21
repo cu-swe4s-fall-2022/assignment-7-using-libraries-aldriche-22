@@ -20,13 +20,17 @@ def get_random_matrix(num_rows, num_columns):
     num_rows: int
         number of rows in the matrix
     num_columns: int
-        number of columns in the matrix
+        number of columns in the 2D matrix
         
     Outputs:
     matrix: array of dimensions defined by num_rows, num_columns
     '''
-    matrix = np.random.rand(num_rows, num_columns)
-    return matrix
+    if num_rows != 0 and num_columns != 0:
+        try:
+            matrix = np.random.uniform(num_rows, num_columns)
+            print(matrix)
+        except: 
+            raise Exception('dimensions of array must be nonzero')
 
 def get_file_dimensions(file_name):
     return (0,0)

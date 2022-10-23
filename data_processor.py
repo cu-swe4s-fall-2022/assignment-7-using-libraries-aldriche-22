@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+import sys
 
 def get_random_matrix(num_rows, num_columns):
     '''
@@ -19,6 +19,7 @@ def get_random_matrix(num_rows, num_columns):
     '''
     if num_rows != 0 and num_columns != 0:
         try:
+            # need to incorporate random seed to ensure reproducibility!!
             matrix = np.random.rand(num_rows, num_columns)
             print(matrix)
         except: 

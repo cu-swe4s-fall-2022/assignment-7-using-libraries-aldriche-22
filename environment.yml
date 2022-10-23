@@ -38,4 +38,13 @@ dependencies:
   - tzdata=2022e=h191b570_0
   - wheel=0.37.1=pyhd8ed1ab_0
   - xz=5.2.6=h166bdaf_0
+  - pip:
+    - contourpy==1.0.5
+    - cycler==0.11.0
+    - fonttools==4.38.0
+    - kiwisolver==1.4.4
+    - matplotlib==3.6.1
+    - packaging==21.3
+    - pillow==9.2.0
+    - pyparsing==3.0.9
 prefix: /home/jovyan/.conda/envs/swe4s

@@ -1,4 +1,5 @@
 import unittest
+import numpy as np
 import os
 import sys
 import data_processor as dp 
@@ -15,6 +16,10 @@ class classTestUtils(unittest.TestCase):
         while cls.y != 0:
             cls.y =  random.random()
         cls.matrix = dp.get_random_matrix(x,y)
+        
+        # generate a practice csv file 
+        np.savetxt("pracctice.csv", cls.matrix, delimiter=",")
+
         
     @classmethod
     def tearDownClass(cls):
@@ -35,8 +40,13 @@ class classTestUtils(unittest.TestCase):
 
         # check that num_rows and num_columns are non-zero
         self.assertNotEqual(len(self.matrix), 0) 
-        # currently cls.x randomly could be 0, will update get_random_matrix 
-        # to handle zeros for num_row and num_column 
+
+    def get_file_dimensions(self):
+        # positive test: test that the output of the function matches the 
+        # dimensions of the matrix
+        self.assertEqual(dp.get_file_dimensions('practice.csv'), (cls.x, cls.y))
         
+   
+
 if __name__ == '__main__':
     unittest.main()

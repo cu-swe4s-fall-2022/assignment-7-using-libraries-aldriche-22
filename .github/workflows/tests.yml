@@ -20,7 +20,7 @@ jobs:
         environment-file: environment.yml
     - run: pycodestyle $(git ls-files "*.py")
     
-  unit_tests:
+  unit_test_data_processor:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -33,15 +33,28 @@ jobs:
           environment-file: environment.yml
       - run: python -m unittest test_data_processor
 
-#   functional_tests:
-#     runs-on: ubuntu-latest
-#     defaults:
-#       run:
-#         shell: bash -l {0}
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: conda-incubator/setup-miniconda@v2
-#         with:
-#           activate-environment: swe4s
-#           environment-file: environment.yml
-#       - run: bash test_search.sh
+  unit_test_plotter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with: 
+          activate-environment: swe4s
+          environment-file: environment.yml
+      - run: python -m unittest plotter
+
+  functional_tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: swe4s
+          environment-file: environment.yml
+      - run: bash func_test.sh

@@ -32,7 +32,7 @@ jobs:
           activate-environment: swe4s
           environment-file: environment.yml
       - run: |
-         cd tests 
+         cd test 
          python -m unittest test_data_processor
 
   

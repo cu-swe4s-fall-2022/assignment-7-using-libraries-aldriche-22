@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+import sys
 
 def get_random_matrix(num_rows, num_columns):
     '''
@@ -19,7 +19,8 @@ def get_random_matrix(num_rows, num_columns):
     '''
     if num_rows != 0 and num_columns != 0:
         try:
-            matrix = np.random.uniform(num_rows, num_columns)
+            # need to incorporate random seed to ensure reproducibility!!
+            matrix = np.random.rand(num_rows, num_columns)
             print(matrix)
         except: 
             raise Exception('dimensions of array must be nonzero')
@@ -39,14 +40,20 @@ def get_file_dimensions(file_name):
     rows_cols: tuple
         number of rows and columns (r, c)
     '''
-    file = None
-    file = pd.open_csv(file_name)
-    df = pd.Dataframe(file)
-    rows = len(df.axes[0])
-    cols = len(df.axes[1])
-    rows_cols = (rows, cols)
-    
-    return rows_cols
+    file = None 
+    try: 
+        file = pd.open_csv(file_name)
+        df = pd.Dataframe(file)
+        rows = len(df.axes[0])
+        cols = len(df.axes[1])
+        rows_cols = (rows, cols)
+        print(rows_cols)
+        
+        # could also use np.shape(df)
+        
+    except: 
+        FileNotFoundError
+        sys.exit(1)
 
 def write_matrix_to_file(num_rows, num_columns, file_name):
     '''
@@ -62,4 +69,11 @@ def write_matrix_to_file(num_rows, num_columns, file_name):
         name of a csv file to save the matrix in
     
     '''
-    return None
+    if num_rows != 0 and num_columns != 0:
+        try:
+            matrix = np.random.rand(num_rows, num_columns)
+            np.savetxt(file_name, matrix, delimiter=",")
+        except: 
+            raise Exception('dimensions of array must be nonzero')
+    
+    

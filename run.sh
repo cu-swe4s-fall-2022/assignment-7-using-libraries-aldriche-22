@@ -13,7 +13,7 @@ python3 plotter_redo.py --file_name 'iris.data'
 # pycodestyle test_data_processor.py 
 
 # run unit tests
-python3 test_data_processor.py 
+python3 test/test_data_processor.py 
 
 # run functional tests
-bash func_test.sh
+bash func/func_test.sh

@@ -19,7 +19,6 @@ class classTestUtils(unittest.TestCase):
         practice_array = np.array([[1,2],[3,4]])
         np.savetxt("use_for_test_get_file_dimensions.csv", practice_array, delimiter=",")
         
-        
     @classmethod
     def tearDownClass(cls):
         cls.x = None
@@ -53,6 +52,5 @@ class classTestUtils(unittest.TestCase):
         self.assertEqual(len(df), self.x)
         self.assertEqual(len(df[0]), self.x)
         
-
 if __name__ == '__main__':
     unittest.main()
